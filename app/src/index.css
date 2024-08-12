@@ -16,6 +16,11 @@ code {
     monospace;
 }
 
+::root {
+  --tw-shadow: 8px 8px 0px rgba(0,0,0,1);
+  --tw-shadow-colored: 8px 8px 0px var(--tw-shadow-color);
+}
+
 .dock-tab  {
   margin-right: 2px;
   border: 1px solid #ddd;
@@ -34,4 +39,8 @@ code {
 
 .dock-panel.dock-style-place-holder {
   background-color: transparent;
+}
+
+.dock-fbox > .dock-panel {
+  @apply border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] !important;
 }
