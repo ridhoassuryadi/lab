@@ -9,7 +9,6 @@ export function Home() {
       language="js"
       placeholder="Please enter JS code."
       padding={15}
-      className=" border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] grid place-content-center"
       style={{
         backgroundColor: "#f5f5f5",
         fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
