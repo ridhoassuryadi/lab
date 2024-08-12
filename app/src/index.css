@@ -37,9 +37,10 @@ code {
 }
 
 .dock-tab  {
-  border: 1px solid #ddd;
   border-radius: 5px 5px 0 0;
   height: auto !important;
+  background-color: #f9f3f2 !important;
+  margin-right: 0 !important;
 }
 
 .dock-tab > div {
@@ -47,10 +48,24 @@ code {
 }
 
 .dock-tab-active {
-  border-bottom: 1px solid #fff;
-  background: #fff;
+  background: #FDE9E4 !important;
+  color: #ff642b !important;
 }
 
+.dock-tab:hover {
+  color: #ff642b !important;  
+}
+
+.dock-top .dock-ink-bar {
+  background-color: #ff642b;
+}
+
+.dock-top .dock-bar::after {
+ content: '';
+  height: 3px;
+  width: 100% ;
+  background-color: black;  
+}
 .w-tc-editor {
   height: 100%;
   overflow-y: scroll;
@@ -62,4 +77,8 @@ code {
 
 .dock-fbox > .dock-panel {
   @apply border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] !important;
+}
+
+.dock-top .dock-bar {
+  padding-left: 0;
 }

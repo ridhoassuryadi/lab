@@ -9,7 +9,7 @@ export function Event() {
       placeholder="Please enter JS code."
       padding={15}
       style={{
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#FDE9E4",
         fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
       }}
     />
