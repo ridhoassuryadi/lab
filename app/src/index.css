@@ -82,3 +82,86 @@ code {
 .dock-top .dock-bar {
   padding-left: 0 !important;
 }
+
+.dock-extra-content .dock-panel-max-btn::before {
+  width: 1rem;
+  height: 1rem;
+  border: 2.4px solid;
+}
+
+.dock-bar .dock-nav {
+  align-items: center;
+}
+
+.window-pane::-webkit-scrollbar {
+  background-color: #fff;
+  width: 22px
+}
+
+.window-pane::-webkit-scrollbar-track {
+  background: linear-gradient(45deg,#000 25%,transparent 0,transparent 75%,#000 0,#000),linear-gradient(45deg,#000 25%,transparent 0,transparent 75%,#000 0,#000);
+  background-color: #fff;
+  background-position: 0 0,2px 2px;
+  background-size: 4px 4px;
+  border-left: 4px solid #000;
+  width: 10px
+}
+
+.window-pane::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border: 2px solid #000;
+  border-right: none;
+  box-sizing: content-box;
+  width: 20px
+}
+
+.w-tc-editor {
+  overflow: scroll;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment,
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:vertical:end:increment {
+  display: block;
+}
+
+::-webkit-scrollbar-button:vertical:start {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./assets/button-up.svg");
+}
+::-webkit-scrollbar-button:vertical:start:active {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-up-active.svg");
+}
+::-webkit-scrollbar-button:vertical:end {
+  height: 23.38px;
+  background-image: svg-load("./assets/button-down.svg");
+}
+::-webkit-scrollbar-button:vertical:end:active {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-down-active.svg");
+}
+
+::-webkit-scrollbar-button:horizontal:start {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-left.svg");
+}
+::-webkit-scrollbar-button:horizontal:start:active {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-left-active.svg");
+}
+::-webkit-scrollbar-button:horizontal:end {
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-right.svg");
+}
+::-webkit-scrollbar-button:horizontal:end:active {
+  background-repeat: no-repeat;
+  height: 23.38px;
+  background-image: svg-load("./icon/scrollbar-right-active.svg");
+}
