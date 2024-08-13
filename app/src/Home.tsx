@@ -6,7 +6,6 @@ export function Home() {
   return (
     <CodeEditor
       value={`
-
 /**
       
 ██╗  ██╗ █████╗ ██╗     ███████╗███████╗██╗          ██╗███████╗
@@ -38,12 +37,14 @@ const UPCOMING_EVENT: Event = {
 }
   
       `}
+      className="window-pane"
       language="js"
       placeholder="Please enter JS code."
       padding={15}
       style={{
         backgroundColor: "#FDE9E4",
         fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+        overflow: "scroll"
       }}
     />
   );

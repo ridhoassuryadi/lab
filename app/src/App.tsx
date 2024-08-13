@@ -68,7 +68,7 @@ const ClickSpark: React.FC = () => {
   }, []);
 
   return (
-    <div ref={parentRef} className="Spark" style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div ref={parentRef} className="Spark" style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <div
         ref={sparkRef}
         style={{
@@ -109,7 +109,6 @@ function App() {
   return (
     <div className="App">
       <Case />
-      <ClickSpark />
     </div>
   );
 }

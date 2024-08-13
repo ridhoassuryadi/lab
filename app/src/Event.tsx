@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+/* eslint-disable no-useless-escape */
+import React from "react";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 export function Event() {
   return (
     <CodeEditor
-      value={    `function add(a, b) {\n  return a + b;\n}`}
+      value={`
+/**
+ * 
+███████ ██    ██ ███████ ███    ██ ████████ ███████ 
+██      ██    ██ ██      ████   ██    ██    ██      
+█████   ██    ██ █████   ██ ██  ██    ██    ███████ 
+██       ██  ██  ██      ██  ██ ██    ██         ██ 
+███████   ████   ███████ ██   ████    ██    ███████ 
+"List all curated events, from upcoming to past"
+ * 
+ * / 
+      `}
       language="js"
       placeholder="Please enter JS code."
       padding={15}
