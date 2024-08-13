@@ -90,7 +90,6 @@ code {
 }
 
 .dock-bar .dock-nav {
-  padding-right: 1rem;
   align-items: center;
 }
 
@@ -130,7 +129,7 @@ code {
 ::-webkit-scrollbar-button:vertical:start {
   background-repeat: no-repeat;
   height: 23.38px;
-  background-image: svg-load("./icon/scrollbar-up.svg");
+  background-image: svg-load("./assets/button-up.svg");
 }
 ::-webkit-scrollbar-button:vertical:start:active {
   background-repeat: no-repeat;
@@ -139,7 +138,7 @@ code {
 }
 ::-webkit-scrollbar-button:vertical:end {
   height: 23.38px;
-  background-image: svg-load("./icon/scrollbar-down.svg");
+  background-image: svg-load("./assets/button-down.svg");
 }
 ::-webkit-scrollbar-button:vertical:end:active {
   background-repeat: no-repeat;
