@@ -93,12 +93,12 @@ code {
   align-items: center;
 }
 
-.window-pane::-webkit-scrollbar {
+::-webkit-scrollbar {
   background-color: #fff;
   width: 22px
 }
 
-.window-pane::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: linear-gradient(45deg,#000 25%,transparent 0,transparent 75%,#000 0,#000),linear-gradient(45deg,#000 25%,transparent 0,transparent 75%,#000 0,#000);
   background-color: #fff;
   background-position: 0 0,2px 2px;
@@ -107,7 +107,7 @@ code {
   width: 10px
 }
 
-.window-pane::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #fff;
   border: 2px solid #000;
   border-right: none;
@@ -115,8 +115,8 @@ code {
   width: 20px
 }
 
-.w-tc-editor {
-  overflow: scroll;
+.dock-content .w-tc-editor {
+  overflow: scroll !important;
 }
 
 ::-webkit-scrollbar-button:horizontal:start:decrement,
