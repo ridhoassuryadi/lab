@@ -11,9 +11,11 @@
     "framer-motion": "^11.2.12",
     "next": "14.2.4",
     "next-mdx-remote": "^5.0.0",
+    "random-words": "^1.2.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
+    "sass": "^1.77.8",
     "sugar-high": "^0.7.0"
   },
   "devDependencies": {
