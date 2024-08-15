@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import { FC, ReactNode } from "react";
 import localFont from "next/font/local";
+import { Border } from "./border/border";
 
 const inter = localFont({
   src: [
@@ -90,6 +91,7 @@ export const metadata: Metadata = {
 export default (({ children }) => (
   <html lang="en">
     <body className={inter.className}>
+      <Border />
       <div className="flex justify-center">
         <div className="sm:w-content-lg mb-36 mt-16 w-content">{children}</div>
       </div>

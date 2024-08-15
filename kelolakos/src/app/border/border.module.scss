@@ -1,0 +1,44 @@
+.borderContainer {
+    align-content: center;
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 48px;
+    justify-content: center;
+    left: calc(50.00000000000002% - min(560px, 100%) / 2);
+    max-width: 560px;
+    overflow: visible;
+    padding: 0 16px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+.borderWrapper {
+    align-content: flex-end;
+    align-items: flex-end;
+    display: flex;
+    flex: 1 0 0px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 1px;
+    justify-content: space-between;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: 100vw;
+    max-width: 560px;
+}
+
+.borderLine {
+    background-color: #e5e5e5;
+    flex: none;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 1px;
+}
