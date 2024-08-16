@@ -15,7 +15,9 @@ import { HiLocationMarker } from "react-icons/hi";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { clsx } from "clsx";
 import useTheme from "@/hooks/useTheme";
+
 import { Messages } from "./AnimatedMessages"
+import { Features } from "./Features"
 
 export default () => {
   const theme = useTheme();
@@ -64,6 +66,9 @@ export default () => {
         <Messages />                                                 
         <Projects {...css.tabProps} />
 
+      </section>
+      <section>
+        <Features />
       </section>
       <section className="mt-12">
         <h2
