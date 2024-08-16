@@ -93,7 +93,7 @@ export default (({ children }) => (
     <body className={inter.className}>
       <Border />
       <div className="flex justify-center">
-        <div className="sm:w-content-lg mb-36 mt-16 w-content">{children}</div>
+        <div className="">{children}</div>
       </div>
       <Nav />
       <div
