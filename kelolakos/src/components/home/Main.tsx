@@ -18,6 +18,7 @@ import useTheme from "@/hooks/useTheme";
 
 import { Messages } from "./AnimatedMessages"
 import { Features } from "./Features"
+import { Pricing } from "./Pricing"
 
 export default () => {
   const theme = useTheme();
@@ -62,42 +63,8 @@ export default () => {
       <section className="">
         <Features />
       </section>
-      <section className="mt-12">
-        <h2
-          className="mb-4 animate-intro font-medium tracking-tight opacity-0 [animation-delay:550ms]"
-          id="where"
-        >
-          Where
-        </h2>
-        <div className="animate-intro opacity-0 [animation-delay:600ms]">
-          <div className="relative overflow-hidden rounded-lg">
-            <Image
-              src={theme === "dark" ? "/map-dark.webp" : "/map.webp"}
-              width={560}
-              height={325}
-              alt="Map with a marker over the state of Texas"
-              className="grayscale"
-              draggable={false}
-              quality={100}
-              priority
-            />
-            <div aria-hidden>
-              <div className="absolute left-1/2 top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 animate-marker rounded-full bg-blue-500" />
-              <div className="absolute left-1/2 top-1/2 z-10 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-neutral-50 bg-blue-500 shadow-2xl" />
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <a
-              className="mt-1 flex items-center text-sm text-neutral-500"
-              href="https://en.wikipedia.org/wiki/Texas"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <HiLocationMarker />
-              <span className="exclude ml-1">Texas</span>
-            </a>
-          </div>
-        </div>
+      <section className="">
+        <Pricing />
       </section>
     </main>
   );

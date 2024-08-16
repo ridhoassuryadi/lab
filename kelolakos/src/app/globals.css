@@ -297,3 +297,20 @@ button {
   @apply [animation-delay:1050ms];
 }
 
+.from-blue-500 {
+  --tw-gradient-from: hsl(227, 92%, 62%) var(--tw-gradient-from-position);
+  --tw-gradient-to: hsl(252, 91%, 57%) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.text-white p {
+  color: white;
+}
+
+.text-white span {
+  color: white;
+}
