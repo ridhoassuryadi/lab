@@ -15,7 +15,9 @@ import { HiLocationMarker } from "react-icons/hi";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { clsx } from "clsx";
 import useTheme from "@/hooks/useTheme";
+
 import { Messages } from "./AnimatedMessages"
+import { Features } from "./Features"
 
 export default () => {
   const theme = useTheme();
@@ -53,17 +55,12 @@ export default () => {
   const css = useTabs(tabs);
 
   return (
-    <main>
-      <section className="mt-8">
-        <h2
-          className="mb-2 animate-intro font-medium tracking-tight opacity-0 [animation-delay:200ms]"
-          id="projects"
-        >
-          Projects
-        </h2>
+    <main className="flex items-center justify-center flex-col">
+      <section className="sm:w-content-lg  w-content mt-8">
         <Messages />                                                 
-        <Projects {...css.tabProps} />
-
+      </section>
+      <section className="">
+        <Features />
       </section>
       <section className="mt-12">
         <h2
