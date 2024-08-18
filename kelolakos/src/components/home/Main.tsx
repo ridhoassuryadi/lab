@@ -18,6 +18,7 @@ import { Hero } from "./Hero"
 import { Messages } from "./AnimatedMessages"
 import { Features } from "./Features"
 import { Pricing } from "./Pricing"
+import { AppPreview } from "./AppPreview";
 
 
 export default () => {
@@ -55,16 +56,19 @@ export default () => {
 
   return (
     <main className="flex items-center justify-center flex-col">
-      <section className="sm:w-content-lg  w-content">
+      <section className="sm:w-content-md  w-content">
         <Hero />
       </section>
-      <section className="sm:w-content-lg  w-content mt-8">
+      <section className="sm:w-content-lg  w-content py-8" style={{ width: "100%", maxWidth: "840px"}}>
+        <AppPreview />
+      </section>
+      <section className="sm:w-content-md  w-content mt-8">
         <Messages />                                                 
       </section>
-      <section className="">
+      <section className="sm:w-content-lg  w-content mt-8">
         <Features />
       </section>
-      <section className="">
+      <section className="sm:w-content-lg  w-content mt-8">
         <Pricing />
       </section>
     </main>

@@ -19,7 +19,8 @@ const config = {
     },
     extend: {
       width: {
-        "content-lg": "560px",
+        "content-md": "560px",
+        "content-lg": "840px",
         content: "90vw",
       },
       media: {
