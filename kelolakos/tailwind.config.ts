@@ -110,6 +110,14 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -117,6 +125,7 @@ const config = {
         img: "img 1s ease-in-out",
         intro: "intro 0.3s forwards ease-in-out",
         marker: "marker 4s ease-out infinite",
+        shimmer: "shimmer 2s linear infinite"
       },
     },
   },

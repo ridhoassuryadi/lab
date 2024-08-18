@@ -11,17 +11,16 @@ import {
   useRef,
   useState,
 } from "react";
-import { HiLocationMarker } from "react-icons/hi";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { clsx } from "clsx";
-import useTheme from "@/hooks/useTheme";
 
+import { Hero } from "./Hero"
 import { Messages } from "./AnimatedMessages"
 import { Features } from "./Features"
 import { Pricing } from "./Pricing"
 
+
 export default () => {
-  const theme = useTheme();
 
   const [tabs] = useState({
     tabs: [
@@ -53,10 +52,12 @@ export default () => {
     ],
   });
 
-  const css = useTabs(tabs);
 
   return (
     <main className="flex items-center justify-center flex-col">
+      <section className="sm:w-content-lg  w-content">
+        <Hero />
+      </section>
       <section className="sm:w-content-lg  w-content mt-8">
         <Messages />                                                 
       </section>
