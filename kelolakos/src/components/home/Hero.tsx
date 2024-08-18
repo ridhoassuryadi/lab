@@ -1,6 +1,5 @@
 import React from "react";
 import { FlipWords } from "../ui/flip-words";
-import { ShimmerButton } from "../ui/shimmer-button";
 
 export function Hero() {
   const words = ["Mudah", "Simple", "Gampang", "Nyaman"];
