@@ -1,9 +1,3 @@
-"use client";
-/*
- * Documentation:
- * Hero Banner — https://app.subframe.com/3b0b4e9f8fe8/library?component=Hero+Banner_97ddb6e3-4a4e-4aa9-af8d-2074725c7dec
- */
-
 import React from "react";
 import { clsx as cn } from "clsx"
 
