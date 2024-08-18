@@ -32,7 +32,8 @@
     "styled-jss": "^2.2.3",
     "sugar-high": "^0.7.0",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "copy-to-clipboard": "^3.3.3"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
