@@ -1,8 +1,8 @@
 "use client"
 
-import classNames from "classnames"
+import { cn } from "@/lib/utils"
 import React from "react"
-import * as Icons from "../assets/icons/final"
+import * as Icons from "./assets/icons"
 import styles from "./icon.module.css"
 
 // If empty, then renders as an empty icon, but takes up the same amount of space
@@ -34,7 +34,7 @@ export const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(props
   }
 
   return (
-    <span className={classNames(className, styles.root)} ref={ref} {...otherProps}>
+    <span className={cn(className, styles.root)} ref={ref} {...otherProps}>
       {children}
     </span>
   )
