@@ -135,10 +135,6 @@ function Code({ children, className, ...otherProps }: CodeProps) {
     let codeHTML = highlight(code);
     return (
       <pre className={styles.code}>
-        <CopyToClipboardButton
-          className={styles.copyToCode}
-          clipboardText={code}
-        />
         <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...otherProps} />
       </pre>
     );
