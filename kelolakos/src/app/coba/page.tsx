@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { FiX } from "react-icons/fi";
 import { QRCode } from "@/components/ui/QRCode";
+import { Signature } from "@/components/ui/Signature";
 
 export const metadata: Metadata = {
   title: "404",
@@ -32,6 +33,7 @@ export default () => (
         .
       </p>
       <QRCode value="https://himajinhobby.com/"/>
+      <Signature />
     </main>
   </header>
 );

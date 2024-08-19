@@ -1,12 +1,11 @@
 "use client";
 import { SignaturePad, type SignaturePadRootProps } from "@ark-ui/react";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { Icon } from "./icon";
 import { Button } from "./button";
-import {
-  classNames,
-  getValue,
-  useFieldControlContext,
-} from "@rafty/ui";
+import cn from "clsx"
+import { getValue } from "./utils/getValue";
+import { useFieldControlContext } from "./FieldControl/context";
+
 import { ValueOrFunction } from "@/types/valueOrFunction";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
@@ -68,7 +67,7 @@ export const Signature = forwardRef<
     name: _name,
     disabled: _disabled,
     readOnly: _readOnly,
-    className: classNames(signatureClasses({ readonly: _readOnly }), className),
+    className: cn(signatureClasses({ readonly: _readOnly }), className),
     // @ts-ignore
     "data-invalid": _invalid,
   };
@@ -82,8 +81,8 @@ export const Signature = forwardRef<
           className="absolute right-3 top-3"
           asChild
         >
-          <Button size="icon" variant="ghost" isDisabled={_readOnly}>
-            <ArrowPathIcon className="size-4 stroke-2" />
+          <Button size="icon" variant="ghost" disabled={_readOnly}>
+            <Icon name="FeatherArrowUp01" className="size-4 stroke-2" />
           </Button>
         </SignaturePad.ClearTrigger>
         <SignaturePad.Guide className="border-secondary-300 dark:border-secondary-700 absolute bottom-4 left-4 right-4 border-t-2 border-dotted" />
