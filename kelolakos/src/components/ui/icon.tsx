@@ -1,9 +1,7 @@
-"use client"
-
 import { cn } from "@/lib/utils"
 import React from "react"
 import * as Icons from "./assets/icons"
-import styles from "./icon.module.css"
+import styles from "./icon.module.scss"
 
 // If empty, then renders as an empty icon, but takes up the same amount of space
 // If null, then does not render anything.

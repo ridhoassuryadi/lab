@@ -1,10 +1,10 @@
-import { getAllBlogPosts } from "@/src/helpers/mdx-helpers";
+import { getAllBlogPosts } from "../../lib/mdx-helpers";
 import {
   makeMetadata,
   DEFAULT_METADATA,
   makeMetadataUrl,
-} from "@/src/helpers/metadata-helpers";
-import { BlogPostLink } from "@/src/subframe/components/BlogPostLink";
+} from "../../lib/metadata-helpers";
+import { BlogPostLink } from "../../components/blog/BlogPostLink";
 import { Metadata } from "next";
 import Link from "next/link";
 

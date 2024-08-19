@@ -1,10 +1,3 @@
-"use client";
-/*
- * Documentation:
- * Blog Post Link — https://app.subframe.com/3b0b4e9f8fe8/library?component=Blog+Post+Link_67803893-5eb6-4452-a0d8-04060d59de2b
- * Avatar — https://app.subframe.com/3b0b4e9f8fe8/library?component=Avatar_bec25ae6-5010-4485-b46b-cf79e3943ab2
- */
-
 import React from "react";
 import { clsx as cn } from "clsx"
 
