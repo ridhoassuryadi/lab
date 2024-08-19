@@ -1,9 +1,9 @@
-import { BlogFooter } from "@/src/components/blog-footer";
-import { MDXBlogRenderer } from "@/src/components/blog-mdx-renderer";
-import { getAllBlogPosts } from "@/src/helpers/mdx-helpers";
-import { makeMetadataUrl } from "@/src/helpers/metadata-helpers";
-import { Avatar } from "@/src/subframe/components/Avatar";
-import * as SubframeCore from "@subframe/core";
+import { BlogFooter } from "../../../components/blog/BlogFooter";
+import { MDXBlogRenderer } from "../../../components/blog/BlogMDXRenderer";;
+import { getAllBlogPosts } from "../../../lib/mdx-helpers";
+import { makeMetadataUrl } from "../../../lib/metadata-helpers";
+import { Avatar } from "../../../components/ui/Avatar";
+import { Icon } from "../../../components/ui/icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -86,7 +86,7 @@ export default function Blog({ params }: { params: PostParams }) {
         className="flex items-center gap-1 text-subtext-color text-caption py-2 mb-6"
         href="/blog"
       >
-        <SubframeCore.Icon name="FeatherArrowLeft" />
+        <Icon name="FeatherArrowLeft" />
         Back to blog
       </Link>
       <h1 className="font-medium text-4xl tracking-tighter mb-3">
@@ -96,7 +96,6 @@ export default function Blog({ params }: { params: PostParams }) {
         {post.metadata.description}
       </h2>
       <div className="flex items-center gap-1.5 mt-4">
-        <Avatar size="x-small" image={post.metadata.authorImage} />
         <span className="text-body-bold text-subtext-color">
           {post.metadata.authorName}
         </span>
