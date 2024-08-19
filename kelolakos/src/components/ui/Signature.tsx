@@ -3,11 +3,11 @@ import { SignaturePad, type SignaturePadRootProps } from "@ark-ui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { Button } from "./button";
 import {
-  type ValueOrFunction,
   classNames,
   getValue,
   useFieldControlContext,
 } from "@rafty/ui";
+import { ValueOrFunction } from "@/types/valueOrFunction";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 
