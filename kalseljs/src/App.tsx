@@ -4,6 +4,7 @@ import './App.css';
 import { Case } from "./Terminal"
 
 import React, { useEffect, useRef } from 'react';
+import { BackgroundBoxes } from './BackgroundBoxes';
 
 
 const ClickSpark: React.FC = () => {
@@ -108,6 +109,7 @@ const ClickSpark: React.FC = () => {
 function App() {
   return (
     <div className="App">
+      <BackgroundBoxes />
       <Case />
     </div>
   );
