@@ -15,14 +15,10 @@ const ClickSpark: React.FC = () => {
     const parent = parentRef.current;
     const sparkElement = sparkRef.current;
 
-    console.log(parent)
-    console.log(sparkElement)
-
     if (!parent || !sparkElement) return;
 
     const handleClick = (e: MouseEvent) => {
       setSparkPosition(e);
-      console.log("click")
       animateSpark();
     };
 
@@ -61,7 +57,10 @@ const ClickSpark: React.FC = () => {
       sparkElement.style.top = `${e.pageY - rect.height / 2}px`;
     };
 
-    parent.addEventListener('click', handleClick);
+    parent.addEventListener('click', (e) => {
+      handleClick(e);
+      e.stopPropagation(); // Stop the event from bubbling up
+    });
 
     return () => {
       parent.removeEventListener('click', handleClick);
@@ -69,7 +68,7 @@ const ClickSpark: React.FC = () => {
   }, []);
 
   return (
-    <div ref={parentRef} className="Spark" style={{ position: 'absolute', width: '100%', height: '100%' }}>
+    <div ref={parentRef} className="Spark" style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 999 }}>
       <div
         ref={sparkRef}
         style={{
