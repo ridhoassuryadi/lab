@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-import { getAllEvents, getDescNearestEvent } from "./lib/event"
+import { getDescNearestEvent } from "./lib/event"
+import { getAllSponsors } from './lib/sponsor';
 
 export function Home() {
 
@@ -27,8 +27,6 @@ import { Event, DiscordInfo } from "@kalseljs/shared-types";
 // Upcoming Event
 ${getDescNearestEvent()}
 
-// Upcoming Event
-${getAllEvents()}
 
 // FAQ
 const FAQ = [
@@ -47,13 +45,7 @@ const FAQ = [
 ];
 
 // Sponsors
-const SPONSORS = [
-  {
-    name: "Ketuju Creative",
-    logo: "assets/sponsors/ketuju.svg",
-    website: "https://ketuju.com"
-  },
-];
+${getAllSponsors()}
 
 // Discord Information
 const DISCORD_INFO: DiscordInfo = {
