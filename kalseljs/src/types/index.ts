@@ -24,3 +24,15 @@ export interface Event {
       };
     };
   }
+
+
+export interface Member  {
+    name: string;
+    website: string;
+    github: string;
+}
+
+export interface Sponsor {
+    name: string;
+    website: string
+}
