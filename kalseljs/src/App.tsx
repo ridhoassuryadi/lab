@@ -1,7 +1,7 @@
 import './App.css';
 import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
 import { Case } from "./Terminal"
-import { BackgroundBoxes } from './BackgroundBoxes';
+import { Boxes } from './BackgroundBoxes';
 import "primereact/resources/themes/saga-orange/theme.css"
 
 
@@ -289,7 +289,7 @@ function App() {
   return (
     <PrimeReactProvider>
       <div className="App">
-        <BackgroundBoxes />
+        <Boxes />
         {/* <Case /> */}
         <Main />
       </div>
