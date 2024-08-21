@@ -76,9 +76,11 @@ export const getDescNearestEvent = () => {
 export const getAllEvents = () => {
   return (
 `const ALL_EVENT = [
-${EVENTS.map((evt) =>printLn(evt))}
-
-}
+${EVENTS.map((evt) => (
+`{
+    ${printLn(evt)}
+}`)
+  )},
 ]`
   )
 }
