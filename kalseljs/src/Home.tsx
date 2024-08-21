@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
+import { getAllEvents, getDescNearestEvent } from "./lib/event"
+
 export function Home() {
 
   return (
@@ -23,22 +25,10 @@ export function Home() {
 import { Event, DiscordInfo } from "@kalseljs/shared-types";
 
 // Upcoming Event
-const UPCOMING_EVENT: Event = {
-  theme: "Mastering React Hooks: From Basics to Advanced Patterns",
-  time: new Date("2024-09-15T14:00:00"),
-  location: {
-    type: "Hybrid",
-    place: {
-      name: "TechHub Banjarmasin",
-      pin: "https://goo.gl/maps/examplePin"
-    },
-    online: "https://meet.kalseljs.id/react-hooks"
-  },
-  speaker: {
-    name: "Sarah Developer",
-    jobRole: "Senior Frontend Engineer at TechCorp"
-  }
-};
+${getDescNearestEvent()}
+
+// Upcoming Event
+${getAllEvents()}
 
 // FAQ
 const FAQ = [
