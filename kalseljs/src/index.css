@@ -36,6 +36,10 @@ body .p-component {
   font-family: "VT323", monospace;
 }
 
+body .p-dialog-header {
+  padding: 0.6rem 0.6rem;
+}
+
 body::before {
   content: '';
   pointer-events: none;

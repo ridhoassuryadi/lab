@@ -3,6 +3,7 @@ import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
 import { Case } from "./Terminal"
 import { Boxes } from './BackgroundBoxes';
 import "primereact/resources/themes/saga-orange/theme.css"
+import { Image } from 'primereact/image';
 
 
 import React, { useRef, useState, useEffect, useContext } from 'react';
@@ -16,9 +17,13 @@ import { Toast } from 'primereact/toast';
 import { Menubar } from 'primereact/menubar';
 import { MenuItem } from 'primereact/menuitem';
 import { PhotoService } from './service/getPhoto'
+import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import Kalseljs from "./logo.svg"
 
 
-type Image = {
+type Img = {
     itemImageSrc: string,
     thumbnailImageSrc: string,
     alt: string,
@@ -28,7 +33,7 @@ type Image = {
 function Main() {
     const [displayTerminal, setDisplayTerminal] = useState(false);
     const [displayFinder, setDisplayFinder] = useState(false);
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState<Img[]>([]);
     const toast = useRef<Toast>(null);
     const toast2 = useRef<Toast>(null);
     const galleria = useRef<Galleria>(null);
@@ -200,7 +205,7 @@ function Main() {
         }
     ];
 
-    const itemTemplate = (item: Image) => {
+    const itemTemplate = (item: Img) => {
         return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
     };
 
@@ -240,7 +245,10 @@ function Main() {
 
     useEffect(() => {
         TerminalService.on('command', commandHandler);
-        // PhotoService.getImages().then((data: Image[]) => setImages(_ => data));
+        PhotoService.getImages().then((data) => {
+          console.log(data)
+          setImages(data)
+        });
 
         context?.setAppendTo && context.setAppendTo('self')
 
@@ -252,13 +260,18 @@ function Main() {
         };
     }, []);
 
-    const start = <i className="pi pi-apple"></i>;
+    const start = (
+      <React.Fragment>
+        <Image src={Kalseljs} width="1rem"/>
+      </React.Fragment>
+    )
+
     const end = (
         <React.Fragment>
             <i className="pi pi-video" />
             <i className="pi pi-wifi" />
             <i className="pi pi-volume-up" />
-            <span>Banjarbaru: </span>
+            <span>Banjarbaru, </span>
             <span>Fri 13:07</span>
             <i className="pi pi-search" />
             <i className="pi pi-bars" />
@@ -268,7 +281,7 @@ function Main() {
     return (
         <div className="card dock-demo">
             <Tooltip className="dark-tooltip" target=".dock-advanced .p-dock-action" my="center+15 bottom-15" at="center top" showDelay={150} />
-            <Menubar style={{borderBottom: '3px solid'}} end={end} />
+            <Menubar style={{borderBottom: '3px solid'}} start={start} end={end} />
             <div className="dock-window dock-advanced">
                 <Toast ref={toast} />
                 <Toast ref={toast2} position="top-center" />
