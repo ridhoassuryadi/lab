@@ -258,6 +258,7 @@ function Main() {
             <i className="pi pi-video" />
             <i className="pi pi-wifi" />
             <i className="pi pi-volume-up" />
+            <span>Banjarbaru: </span>
             <span>Fri 13:07</span>
             <i className="pi pi-search" />
             <i className="pi pi-bars" />
@@ -267,7 +268,7 @@ function Main() {
     return (
         <div className="card dock-demo">
             <Tooltip className="dark-tooltip" target=".dock-advanced .p-dock-action" my="center+15 bottom-15" at="center top" showDelay={150} />
-            <Menubar model={menubarItems} start={start} end={end} />
+            <Menubar style={{borderBottom: '3px solid'}} end={end} />
             <div className="dock-window dock-advanced">
                 <Toast ref={toast} />
                 <Toast ref={toast2} position="top-center" />
