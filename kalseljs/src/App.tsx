@@ -16,12 +16,19 @@ import { Toast } from 'primereact/toast';
 import { Menubar } from 'primereact/menubar';
 import { MenuItem } from 'primereact/menuitem';
 import { PhotoService } from './service/getPhoto'
-import './DockDemo.css';
+
+
+type Image = {
+    itemImageSrc: string,
+    thumbnailImageSrc: string,
+    alt: string,
+    title: string
+}
 
 function Main() {
     const [displayTerminal, setDisplayTerminal] = useState(false);
     const [displayFinder, setDisplayFinder] = useState(false);
-    const [images, setImages] = useState(null);
+    const [images, setImages] = useState([]);
     const toast = useRef<Toast>(null);
     const toast2 = useRef<Toast>(null);
     const galleria = useRef<Galleria>(null);
@@ -29,7 +36,7 @@ function Main() {
 
     const dockItems = [
         {
-            label: 'Finder',
+            label: 'Home',
             icon: () => <img alt="Finder" src="https://primefaces.org/cdn/primereact/images/dock/finder.svg" width="100%" />,
             command: () => {
                 setDisplayFinder(true);
@@ -43,20 +50,6 @@ function Main() {
             }
         },
         {
-            label: 'App Store',
-            icon: () => <img alt="App Store" src="https://primefaces.org/cdn/primereact/images/dock/appstore.svg" width="100%" />,
-            command: () => {
-                toast2?.current?.show({ severity: 'error', summary: 'An unexpected error occurred while signing in.', detail: 'UNTRUSTED_CERT_TITLE' });
-            }
-        },
-        {
-            label: 'Safari',
-            icon: () => <img alt="Finder" src="https://primefaces.org/cdn/primereact/images/dock/safari.svg" width="100%" />,
-            command: () => {
-                toast2?.current?.show({ severity: 'warn', summary: 'Safari has stopped working' });
-            }
-        },
-        {
             label: 'Photos',
             icon: () => <img alt="Photos" src="https://primefaces.org/cdn/primereact/images/dock/photos.svg" width="100%" />,
             command: () => {
@@ -67,13 +60,6 @@ function Main() {
             label: 'GitHub',
             icon: () => <img alt="Settings" src="https://primefaces.org/cdn/primereact/images/dock/github.svg" width="100%" />
         },
-        {
-            label: 'Trash',
-            icon: () => <img alt="trash" src="https://primefaces.org/cdn/primereact/images/dock/trash.png" width="100%" />,
-            command: () => {
-                toast?.current?.show({ severity: 'info', summary: 'Empty Trash' });
-            }
-        }
     ];
 
     const menubarItems : MenuItem[] = [
@@ -214,7 +200,7 @@ function Main() {
         }
     ];
 
-    const itemTemplate = (item) => {
+    const itemTemplate = (item: Image) => {
         return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
     };
 
@@ -254,7 +240,7 @@ function Main() {
 
     useEffect(() => {
         TerminalService.on('command', commandHandler);
-        PhotoService.getImages().then((data) => setImages(data));
+        // PhotoService.getImages().then((data: Image[]) => setImages(_ => data));
 
         context?.setAppendTo && context.setAppendTo('self')
 
@@ -289,7 +275,7 @@ function Main() {
                 <Dialog visible={displayTerminal} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw' }} onHide={() => setDisplayTerminal(false)} maximizable blockScroll={false}>
                     <Terminal welcomeMessage="Welcome to PrimeReact (cmd: 'date', 'greet {0}', 'random' and 'clear')" prompt="primereact $" />
                 </Dialog>
-                <Dialog visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
+                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
                     <p>test</p>
                 </Dialog>
                 <Galleria ref={galleria} value={images|| []} responsiveOptions={responsiveOptions} numVisible={2} style={{ width: '400px' }}
