@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
 import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
-import { Case } from "./Terminal"
 import { Boxes } from './BackgroundBoxes';
 import "primereact/resources/themes/saga-orange/theme.css"
 import { Image } from 'primereact/image';
@@ -15,12 +15,58 @@ import { TerminalService } from 'primereact/terminalservice';
 import { Galleria } from 'primereact/galleria';
 import { Toast } from 'primereact/toast';
 import { Menubar } from 'primereact/menubar';
-import { MenuItem } from 'primereact/menuitem';
 import { PhotoService } from './service/getPhoto'
+
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import Kalseljs from "./logo.svg"
+import Kalseljs from "./logo.png"
+import { TabMenu } from 'primereact/tabmenu';
+import { MenuItem } from 'primereact/menuitem';
+
+interface CustomMenuItem extends MenuItem {
+  label: string;
+  template: (item: MenuItem) => React.ReactNode
+}
+
+function Editor() {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const itemRenderer = (item: MenuItem, itemIndex: number) => (
+    <a 
+      className="p-menuitem-link flex align-items-center gap-2" 
+      onClick={() => setActiveIndex(itemIndex)}
+    >
+      <img 
+        alt={item.label} 
+        src={Kalseljs} 
+        style={{ width: '0.6rem' }} 
+      />
+      <span className="font-bold">{item.label}</span>
+    </a>
+  );
+
+  const items: CustomMenuItem[] = [
+    {
+      label: 'home.kalsel.js',
+      template: (item) => itemRenderer(item, 0)
+    },
+    {
+      label: 'event.kalsel.js',
+      template: (item) => itemRenderer(item, 1)
+    }
+  ];
+
+  return (
+    <div className="card">
+      <TabMenu 
+        model={items} 
+        activeIndex={activeIndex} 
+        onTabChange={(e) => setActiveIndex(e.index)} 
+      />
+    </div>
+  );
+}
 
 
 type Img = {
@@ -65,129 +111,6 @@ function Main() {
             label: 'GitHub',
             icon: () => <img alt="Settings" src="https://primefaces.org/cdn/primereact/images/dock/github.svg" width="100%" />
         },
-    ];
-
-    const menubarItems : MenuItem[] = [
-        {
-            label: 'Finder',
-            className: 'menubar-root'
-        },
-        {
-            label: 'File',
-            items: [
-                {
-                    label: 'New',
-                    icon: 'pi pi-fw pi-plus',
-                    items: [
-                        {
-                            label: 'Bookmark',
-                            icon: 'pi pi-fw pi-bookmark'
-                        },
-                        {
-                            label: 'Video',
-                            icon: 'pi pi-fw pi-video'
-                        }
-                    ]
-                },
-                {
-                    label: 'Delete',
-                    icon: 'pi pi-fw pi-trash'
-                },
-                {
-                    separator: true
-                },
-                {
-                    label: 'Export',
-                    icon: 'pi pi-fw pi-external-link'
-                }
-            ]
-        },
-        {
-            label: 'Edit',
-            items: [
-                {
-                    label: 'Left',
-                    icon: 'pi pi-fw pi-align-left'
-                },
-                {
-                    label: 'Right',
-                    icon: 'pi pi-fw pi-align-right'
-                },
-                {
-                    label: 'Center',
-                    icon: 'pi pi-fw pi-align-center'
-                },
-                {
-                    label: 'Justify',
-                    icon: 'pi pi-fw pi-align-justify'
-                }
-            ]
-        },
-        {
-            label: 'Users',
-            items: [
-                {
-                    label: 'New',
-                    icon: 'pi pi-fw pi-user-plus'
-                },
-                {
-                    label: 'Delete',
-                    icon: 'pi pi-fw pi-user-minus'
-                },
-                {
-                    label: 'Search',
-                    icon: 'pi pi-fw pi-users',
-                    items: [
-                        {
-                            label: 'Filter',
-                            icon: 'pi pi-fw pi-filter',
-                            items: [
-                                {
-                                    label: 'Print',
-                                    icon: 'pi pi-fw pi-print'
-                                }
-                            ]
-                        },
-                        {
-                            icon: 'pi pi-fw pi-bars',
-                            label: 'List'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            label: 'Events',
-            items: [
-                {
-                    label: 'Edit',
-                    icon: 'pi pi-fw pi-pencil',
-                    items: [
-                        {
-                            label: 'Save',
-                            icon: 'pi pi-fw pi-calendar-plus'
-                        },
-                        {
-                            label: 'Delete',
-                            icon: 'pi pi-fw pi-calendar-minus'
-                        }
-                    ]
-                },
-                {
-                    label: 'Archive',
-                    icon: 'pi pi-fw pi-calendar-times',
-                    items: [
-                        {
-                            label: 'Remove',
-                            icon: 'pi pi-fw pi-calendar-minus'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            label: 'Quit'
-        }
     ];
 
     const responsiveOptions = [
@@ -261,16 +184,12 @@ function Main() {
     }, []);
 
     const start = (
-      <React.Fragment>
-        <Image src={Kalseljs} width="1rem"/>
-      </React.Fragment>
+        <Image src={Kalseljs} width="18" height="18"/>
     )
 
     const end = (
         <React.Fragment>
-            <i className="pi pi-video" />
             <i className="pi pi-wifi" />
-            <i className="pi pi-volume-up" />
             <span>Banjarbaru, </span>
             <span>Fri 13:07</span>
             <i className="pi pi-search" />
@@ -289,8 +208,8 @@ function Main() {
                 <Dialog visible={displayTerminal} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw' }} onHide={() => setDisplayTerminal(false)} maximizable blockScroll={false}>
                     <Terminal welcomeMessage="Welcome to PrimeReact (cmd: 'date', 'greet {0}', 'random' and 'clear')" prompt="primereact $" />
                 </Dialog>
-                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
-                    <p>test</p>
+                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '50vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
+                   <Editor />
                 </Dialog>
                 <Galleria ref={galleria} value={images|| []} responsiveOptions={responsiveOptions} numVisible={2} style={{ width: '400px' }}
                     circular fullScreen showThumbnails={false} showItemNavigators item={itemTemplate} />
