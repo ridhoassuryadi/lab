@@ -1,4 +1,4 @@
-import DockLayout, { DockContext, type LayoutData, type PanelData} from 'rc-dock'
+import DockLayout, { type LayoutData} from 'rc-dock'
 import { Event } from "./Event"
 import { Home } from "./Home"
 import "rc-dock/dist/rc-dock.css";
@@ -36,6 +36,8 @@ export const Case = () => {
       size: 250,
       children: [
         {
+          widthFlex: 200,
+          heightFlex: 200,
           tabs: [
             {id: 'tab1', title: (<Title value={"home.kalsel.js"}/>), content: Home, group: 'github-panel'},
             {id: 'tab2', title: (<Title value={"events.kalsel.js"}/>), content: Event,  group: 'github-panel'}
