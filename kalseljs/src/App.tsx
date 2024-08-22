@@ -24,6 +24,13 @@ import Kalseljs from "./logo.png"
 import { TabMenu } from 'primereact/tabmenu';
 import { MenuItem } from 'primereact/menuitem';
 
+
+// Launcher Icon
+import LauncherImg from "./assets/launcher-img.png"
+import LauncherCode from "./assets/launcher-code.png";
+import LauncherDiscord from "./assets/launcher-discord.png";
+import LauncherGithub from "./assets/launcher-github.png";
+
 interface CustomMenuItem extends MenuItem {
   label: string;
   template: (item: MenuItem) => React.ReactNode
@@ -88,28 +95,28 @@ function Main() {
     const dockItems = [
         {
             label: 'Home',
-            icon: () => <img alt="Finder" src="https://primefaces.org/cdn/primereact/images/dock/finder.svg" width="100%" />,
+            icon: () => <img alt="Launcher Code" src={LauncherCode} width="100%" />,
             command: () => {
                 setDisplayFinder(true);
             }
         },
         {
             label: 'Terminal',
-            icon: () => <img alt="Finder" src="https://primefaces.org/cdn/primereact/images/dock/terminal.svg" width="100%" />,
+            icon: () => <img alt="Launcher Github" src={LauncherGithub} width="100%" />,
             command: () => {
                 setDisplayTerminal(true);
             }
         },
         {
             label: 'Photos',
-            icon: () => <img alt="Photos" src="https://primefaces.org/cdn/primereact/images/dock/photos.svg" width="100%" />,
+            icon: () => <img alt="Launcher Photos" src={LauncherImg} width="100%" />,
             command: () => {
                 galleria?.current?.show();
             }
         },
         {
             label: 'GitHub',
-            icon: () => <img alt="Settings" src="https://primefaces.org/cdn/primereact/images/dock/github.svg" width="100%" />
+            icon: () => <img alt="Launcher Discord" src={LauncherDiscord} width="100%" />
         },
     ];
 
