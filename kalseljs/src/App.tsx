@@ -7,7 +7,7 @@ import { Image } from 'primereact/image';
 
 
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Dock } from 'primereact/dock';
+import { Dock } from './components/Dock';
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
 import { Terminal } from 'primereact/terminal';
@@ -25,11 +25,6 @@ import { TabMenu } from 'primereact/tabmenu';
 import { MenuItem } from 'primereact/menuitem';
 
 
-// Launcher Icon
-import LauncherImg from "./assets/launcher-img.png"
-import LauncherCode from "./assets/launcher-code.png";
-import LauncherDiscord from "./assets/launcher-discord.png";
-import LauncherGithub from "./assets/launcher-github.png";
 
 interface CustomMenuItem extends MenuItem {
   label: string;
@@ -92,33 +87,6 @@ function Main() {
     const galleria = useRef<Galleria>(null);
     const context = useContext(PrimeReactContext);
 
-    const dockItems = [
-        {
-            label: 'Home',
-            icon: () => <img alt="Launcher Code" src={LauncherCode} width="100%" />,
-            command: () => {
-                setDisplayFinder(true);
-            }
-        },
-        {
-            label: 'Terminal',
-            icon: () => <img alt="Launcher Github" src={LauncherGithub} width="100%" />,
-            command: () => {
-                setDisplayTerminal(true);
-            }
-        },
-        {
-            label: 'Photos',
-            icon: () => <img alt="Launcher Photos" src={LauncherImg} width="100%" />,
-            command: () => {
-                galleria?.current?.show();
-            }
-        },
-        {
-            label: 'GitHub',
-            icon: () => <img alt="Launcher Discord" src={LauncherDiscord} width="100%" />
-        },
-    ];
 
     const responsiveOptions = [
         {
@@ -211,7 +179,12 @@ function Main() {
             <div className="dock-window dock-advanced">
                 <Toast ref={toast} />
                 <Toast ref={toast2} position="top-center" />
-                <Dock model={dockItems} />
+                <Dock 
+                  onClickCode={() => setDisplayFinder(true)}
+                  onClickGithub={() => window.open("https://github.com/KalselJS", "_blank")}
+                  onClickImage={() => galleria?.current?.show()}
+                  onClickDiscord={() => window.open("https://github.com/KalselJS", "_blank")}
+                />
                 <Dialog visible={displayTerminal} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw' }} onHide={() => setDisplayTerminal(false)} maximizable blockScroll={false}>
                     <Terminal welcomeMessage="Welcome to PrimeReact (cmd: 'date', 'greet {0}', 'random' and 'clear')" prompt="primereact $" />
                 </Dialog>
