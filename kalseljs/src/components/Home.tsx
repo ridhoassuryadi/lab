@@ -1,7 +1,7 @@
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-import { getDescNearestEvent } from "./lib/event"
-import { getAllSponsors } from './lib/sponsor';
+import { getDescNearestEvent } from "../lib/event"
+import { getAllSponsors } from '../lib/sponsor';
 
 export function Home() {
 
@@ -131,7 +131,6 @@ export default homepageStructure;
       style={{
         backgroundColor: "#FDE9E4",
         fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-        overflow: "scroll"
       }}
     />
   );

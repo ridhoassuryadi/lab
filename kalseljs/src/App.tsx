@@ -8,6 +8,8 @@ import { Image } from 'primereact/image';
 
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import { Dock } from './components/Dock';
+import { Editor } from "./components/Editor";
+
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
 import { Terminal } from 'primereact/terminal';
@@ -21,55 +23,6 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import Kalseljs from "./logo.png"
-import { TabMenu } from 'primereact/tabmenu';
-import { MenuItem } from 'primereact/menuitem';
-
-
-
-interface CustomMenuItem extends MenuItem {
-  label: string;
-  template: (item: MenuItem) => React.ReactNode
-}
-
-function Editor() {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  const itemRenderer = (item: MenuItem, itemIndex: number) => (
-    <a 
-      className="p-menuitem-link flex align-items-center gap-2" 
-      onClick={() => setActiveIndex(itemIndex)}
-    >
-      <img 
-        alt={item.label} 
-        src={Kalseljs} 
-        style={{ width: '0.6rem' }} 
-      />
-      <span className="font-bold">{item.label}</span>
-    </a>
-  );
-
-  const items: CustomMenuItem[] = [
-    {
-      label: 'home.kalsel.js',
-      template: (item) => itemRenderer(item, 0)
-    },
-    {
-      label: 'event.kalsel.js',
-      template: (item) => itemRenderer(item, 1)
-    }
-  ];
-
-  return (
-    <div className="card">
-      <TabMenu 
-        model={items} 
-        activeIndex={activeIndex} 
-        onTabChange={(e) => setActiveIndex(e.index)} 
-      />
-    </div>
-  );
-}
-
 
 type Img = {
     itemImageSrc: string,
@@ -185,9 +138,6 @@ function Main() {
                   onClickImage={() => galleria?.current?.show()}
                   onClickDiscord={() => window.open("https://github.com/KalselJS", "_blank")}
                 />
-                <Dialog visible={displayTerminal} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '30vw' }} onHide={() => setDisplayTerminal(false)} maximizable blockScroll={false}>
-                    <Terminal welcomeMessage="Welcome to PrimeReact (cmd: 'date', 'greet {0}', 'random' and 'clear')" prompt="primereact $" />
-                </Dialog>
                 <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '50vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
                    <Editor />
                 </Dialog>

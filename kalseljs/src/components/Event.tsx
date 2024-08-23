@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React from "react";
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { getAllEvents } from "./lib/event"
+import { getAllEvents } from "../lib/event"
 
 export function Event() {
   return (
