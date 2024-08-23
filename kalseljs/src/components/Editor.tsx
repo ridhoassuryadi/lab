@@ -3,6 +3,10 @@ import { MenuItem } from 'primereact/menuitem';
 import { useState } from 'react';
 import Kalseljs from "../logo.png"
 
+// Tab Content
+import { Event } from "./Event"
+import { Home } from "./Home"
+
 export interface CustomMenuItem extends MenuItem {
     label: string;
     template: (item: MenuItem) => React.ReactNode
@@ -43,6 +47,10 @@ export function Editor() {
           activeIndex={activeIndex} 
           onTabChange={(e) => setActiveIndex(e.index)} 
         />
+        <div style={{ overflow: "scroll", flex: 1}}>
+            {activeIndex === 0 && <Home />}
+            {activeIndex === 1 && <Event />}
+        </div>
       </div>
     );
   }
