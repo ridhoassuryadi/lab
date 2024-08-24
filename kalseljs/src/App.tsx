@@ -56,8 +56,13 @@ function Main() {
     ];
 
     const itemTemplate = (item: Img) => {
+      console.log("kerender")
         return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
     };
+
+    const thumbnailTemplate = (item: any) => {
+      return <img src={item.thumbnailImageSrc} alt={item.alt} />
+  }
 
     useEffect(() => {
         PhotoService.getImages().then((data) => {
@@ -73,6 +78,7 @@ function Main() {
         };
     }, [context]);
 
+    console.log("imsges", images)
     const start = (
         <Image src={Kalseljs} width="18" height="18"/>
     )
@@ -98,11 +104,11 @@ function Main() {
                   onClickImage={() => galleria?.current?.show()}
                   onClickDiscord={() => window.open("https://github.com/KalselJS", "_blank")}
                 />
-                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '50vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
+                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '90vw', '360px' : '90vw' }} style={{ height: '32rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
                    <Editor />
                 </Dialog>
-                <Galleria ref={galleria} value={images|| []} responsiveOptions={responsiveOptions} numVisible={2} style={{ width: '400px' }}
-                    circular fullScreen showThumbnails={true} showItemNavigators item={itemTemplate} />
+                <Galleria ref={galleria} value={images} responsiveOptions={responsiveOptions} numVisible={5}
+                    circular fullScreen showThumbnails={true} showItemNavigators item={itemTemplate} thumbnail={thumbnailTemplate} style={{ width: '70vw'}} />
             </div>
         </div>
     )
