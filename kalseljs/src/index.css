@@ -291,3 +291,9 @@ body .p-dialog-header
 body .p-tabmenu .p-tabmenu-nav {
   background-color: #EFF2F1;
 }
+
+body .p-menubar,
+body .p-menubar-end {
+  display: flex;
+  align-items: center;
+}

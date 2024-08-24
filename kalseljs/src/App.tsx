@@ -12,7 +12,6 @@ import { Editor } from "./components/Editor";
 
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
-import { Terminal } from 'primereact/terminal';
 import { TerminalService } from 'primereact/terminalservice';
 import { Galleria } from 'primereact/galleria';
 import { Toast } from 'primereact/toast';
@@ -23,6 +22,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import Kalseljs from "./logo.png"
+import { Clock } from './components/Clock';
 
 type Img = {
     itemImageSrc: string,
@@ -32,7 +32,6 @@ type Img = {
 }
 
 function Main() {
-    const [displayTerminal, setDisplayTerminal] = useState(false);
     const [displayFinder, setDisplayFinder] = useState(false);
     const [images, setImages] = useState<Img[]>([]);
     const toast = useRef<Toast>(null);
@@ -109,7 +108,7 @@ function Main() {
             // reset
             context?.setAppendTo && context.setAppendTo(null)
         };
-    }, []);
+    }, [context]);
 
     const start = (
         <Image src={Kalseljs} width="18" height="18"/>
@@ -118,10 +117,8 @@ function Main() {
     const end = (
         <React.Fragment>
             <i className="pi pi-wifi" />
-            <span>Banjarbaru, </span>
-            <span>Fri 13:07</span>
-            <i className="pi pi-search" />
-            <i className="pi pi-bars" />
+            <div className="w-2 h-2" />
+            <Clock />
         </React.Fragment>
     );
 
