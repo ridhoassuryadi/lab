@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
 import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
-import { Boxes } from './BackgroundBoxes';
+import { Boxes } from './components/BackgroundBoxes';
 import "primereact/resources/themes/saga-orange/theme.css"
 import { Image } from 'primereact/image';
 
@@ -12,7 +12,6 @@ import { Editor } from "./components/Editor";
 
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
-import { TerminalService } from 'primereact/terminalservice';
 import { Galleria } from 'primereact/galleria';
 import { Toast } from 'primereact/toast';
 import { Menubar } from 'primereact/menubar';
