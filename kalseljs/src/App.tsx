@@ -59,42 +59,7 @@ function Main() {
         return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
     };
 
-    const commandHandler = (text: string) => {
-        let response;
-        let argsIndex = text.indexOf(' ');
-        let command = argsIndex !== -1 ? text.substring(0, argsIndex) : text;
-
-        switch (command) {
-            case 'date':
-                response = 'Today is ' + new Date().toDateString();
-                break;
-
-            case 'greet':
-                response = 'Hola ' + text.substring(argsIndex + 1) + '!';
-                break;
-
-            case 'random':
-                response = Math.floor(Math.random() * 100);
-                break;
-
-            case 'clear':
-                response = null;
-                break;
-
-            default:
-                response = 'Unknown command: ' + command;
-                break;
-        }
-
-        if (response) {
-            TerminalService.emit('response', response);
-        } else {
-            TerminalService.emit('clear');
-        }
-    };
-
     useEffect(() => {
-        TerminalService.on('command', commandHandler);
         PhotoService.getImages().then((data) => {
           console.log(data)
           setImages(data)
@@ -103,8 +68,6 @@ function Main() {
         context?.setAppendTo && context.setAppendTo('self')
 
         return () => {
-            TerminalService.off('command', commandHandler);
-
             // reset
             context?.setAppendTo && context.setAppendTo(null)
         };
@@ -139,7 +102,7 @@ function Main() {
                    <Editor />
                 </Dialog>
                 <Galleria ref={galleria} value={images|| []} responsiveOptions={responsiveOptions} numVisible={2} style={{ width: '400px' }}
-                    circular fullScreen showThumbnails={false} showItemNavigators item={itemTemplate} />
+                    circular fullScreen showThumbnails={true} showItemNavigators item={itemTemplate} />
             </div>
         </div>
     )
