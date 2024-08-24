@@ -23,9 +23,9 @@ export function Editor() {
         <img 
           alt={item.label} 
           src={Kalseljs} 
-          style={{ width: '0.6rem' }} 
+          style={{ width: '1rem' }} 
         />
-        <span className="font-bold">{item.label}</span>
+        <span className="font-regular">{item.label}</span>
       </a>
     );
   

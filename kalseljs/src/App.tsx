@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import './App.css';
 import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
-import { Boxes } from './BackgroundBoxes';
-import "primereact/resources/themes/saga-orange/theme.css"
+import { Boxes } from './components/BackgroundBoxes';
+
 import { Image } from 'primereact/image';
 
 
@@ -12,8 +11,6 @@ import { Editor } from "./components/Editor";
 
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
-import { Terminal } from 'primereact/terminal';
-import { TerminalService } from 'primereact/terminalservice';
 import { Galleria } from 'primereact/galleria';
 import { Toast } from 'primereact/toast';
 import { Menubar } from 'primereact/menubar';
@@ -22,7 +19,10 @@ import { PhotoService } from './service/getPhoto'
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import "primereact/resources/themes/saga-orange/theme.css"
+
 import Kalseljs from "./logo.png"
+import { Clock } from './components/Clock';
 
 type Img = {
     itemImageSrc: string,
@@ -32,7 +32,6 @@ type Img = {
 }
 
 function Main() {
-    const [displayTerminal, setDisplayTerminal] = useState(false);
     const [displayFinder, setDisplayFinder] = useState(false);
     const [images, setImages] = useState<Img[]>([]);
     const toast = useRef<Toast>(null);
@@ -57,45 +56,15 @@ function Main() {
     ];
 
     const itemTemplate = (item: Img) => {
+      console.log("kerender")
         return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
     };
 
-    const commandHandler = (text: string) => {
-        let response;
-        let argsIndex = text.indexOf(' ');
-        let command = argsIndex !== -1 ? text.substring(0, argsIndex) : text;
-
-        switch (command) {
-            case 'date':
-                response = 'Today is ' + new Date().toDateString();
-                break;
-
-            case 'greet':
-                response = 'Hola ' + text.substring(argsIndex + 1) + '!';
-                break;
-
-            case 'random':
-                response = Math.floor(Math.random() * 100);
-                break;
-
-            case 'clear':
-                response = null;
-                break;
-
-            default:
-                response = 'Unknown command: ' + command;
-                break;
-        }
-
-        if (response) {
-            TerminalService.emit('response', response);
-        } else {
-            TerminalService.emit('clear');
-        }
-    };
+    const thumbnailTemplate = (item: any) => {
+      return <img src={item.thumbnailImageSrc} alt={item.alt} />
+  }
 
     useEffect(() => {
-        TerminalService.on('command', commandHandler);
         PhotoService.getImages().then((data) => {
           console.log(data)
           setImages(data)
@@ -104,13 +73,12 @@ function Main() {
         context?.setAppendTo && context.setAppendTo('self')
 
         return () => {
-            TerminalService.off('command', commandHandler);
-
             // reset
             context?.setAppendTo && context.setAppendTo(null)
         };
-    }, []);
+    }, [context]);
 
+    console.log("imsges", images)
     const start = (
         <Image src={Kalseljs} width="18" height="18"/>
     )
@@ -118,10 +86,8 @@ function Main() {
     const end = (
         <React.Fragment>
             <i className="pi pi-wifi" />
-            <span>Banjarbaru, </span>
-            <span>Fri 13:07</span>
-            <i className="pi pi-search" />
-            <i className="pi pi-bars" />
+            <div className="w-2 h-2" />
+            <Clock />
         </React.Fragment>
     );
 
@@ -138,11 +104,11 @@ function Main() {
                   onClickImage={() => galleria?.current?.show()}
                   onClickDiscord={() => window.open("https://github.com/KalselJS", "_blank")}
                 />
-                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '75vw' }} style={{ width: '50vw', height: '18rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
+                <Dialog className="window-ide" visible={displayFinder} breakpoints={{ '960px': '50vw', '600px': '90vw', '360px' : '90vw' }} style={{ height: '32rem' }} onHide={() => setDisplayFinder(false)} maximizable blockScroll={false}>
                    <Editor />
                 </Dialog>
-                <Galleria ref={galleria} value={images|| []} responsiveOptions={responsiveOptions} numVisible={2} style={{ width: '400px' }}
-                    circular fullScreen showThumbnails={false} showItemNavigators item={itemTemplate} />
+                <Galleria ref={galleria} value={images} responsiveOptions={responsiveOptions} numVisible={5}
+                    circular fullScreen showThumbnails={true} showItemNavigators item={itemTemplate} thumbnail={thumbnailTemplate} style={{ width: '70vw'}} />
             </div>
         </div>
     )
@@ -153,7 +119,6 @@ function App() {
     <PrimeReactProvider>
       <div className="App">
         <Boxes />
-        {/* <Case /> */}
         <Main />
       </div>
     </PrimeReactProvider>
