@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import './App.css';
 import { PrimeReactProvider,  PrimeReactContext } from 'primereact/api';
 import { Boxes } from './components/BackgroundBoxes';
-import "primereact/resources/themes/saga-orange/theme.css"
+
 import { Image } from 'primereact/image';
 
 
@@ -20,6 +19,8 @@ import { PhotoService } from './service/getPhoto'
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import "primereact/resources/themes/saga-orange/theme.css"
+
 import Kalseljs from "./logo.png"
 import { Clock } from './components/Clock';
 
@@ -112,7 +113,6 @@ function App() {
     <PrimeReactProvider>
       <div className="App">
         <Boxes />
-        {/* <Case /> */}
         <Main />
       </div>
     </PrimeReactProvider>
