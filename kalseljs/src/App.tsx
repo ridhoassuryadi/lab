@@ -34,8 +34,6 @@ type Img = {
 function Main() {
     const [displayFinder, setDisplayFinder] = useState(false);
     const [images, setImages] = useState<Img[]>([]);
-    const toast = useRef<Toast>(null);
-    const toast2 = useRef<Toast>(null);
     const galleria = useRef<Galleria>(null);
     const context = useContext(PrimeReactContext);
 
@@ -96,8 +94,6 @@ function Main() {
             <Tooltip className="dark-tooltip" target=".dock-advanced .p-dock-action" my="center+15 bottom-15" at="center top" showDelay={150} />
             <Menubar style={{borderBottom: '3px solid'}} start={start} end={end} />
             <div className="dock-window dock-advanced">
-                <Toast ref={toast} />
-                <Toast ref={toast2} position="top-center" />
                 <Dock 
                   onClickCode={() => setDisplayFinder(true)}
                   onClickGithub={() => window.open("https://github.com/KalselJS", "_blank")}
